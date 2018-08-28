@@ -1,0 +1,37 @@
+$bg-color: #1B1B1B;
+$alt-bg-color: #3F3E3C;
+$body-color: #fff;
+$cta-color: #FF3D06;
+$link-color: #2A75BD;
+$facebook-blue: #405993;
+$twitter-blue: #499FEC;
+
+$body-font: "Open Sans", sans-serif;
+$title-font: "Montserrat", $body-font;
+
+$border-radius: 5px;
+
+@mixin mobile {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin arrow-up($color, $size) {
+  position: relative;
+
+  &:after {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    // border-color: rgba(63, 62, 60, 0);
+    border-bottom-color: $color;
+    border-width: $size;
+    margin-left: -#{$size};
+  }
+}

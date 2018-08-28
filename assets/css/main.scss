@@ -1,0 +1,235 @@
+html {
+  font-size: 62.5%;
+
+  @include mobile {
+    font-size: 52.5%;
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-family: $body-font;
+  line-height: 1.5;
+  text-align: center;
+  color: $body-color;
+  background-color: $bg-color;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $title-font;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 3.6rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: inherit;
+}
+
+b {
+  font-weight: 600;
+}
+
+input, select, textarea {
+  border-radius: $border-radius;
+  border: none;
+  padding: 1.5rem 2rem;
+  font-size: 1.4rem;
+}
+
+.btn {
+  padding: 0.7rem 1.4rem;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: $cta-color;
+  color: #fff;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 1.2rem;
+  transition: background-color .1s;
+
+  &:hover {
+    color: #fff;
+    background-color: darken($cta-color, 5%);
+    cursor: pointer;
+  }
+}
+
+.btn-large {
+  font-size: 2.6rem;
+  padding: 1.5rem 3rem;
+}
+
+.btn-facebook {
+  background-color: $facebook-blue;
+
+  &:hover {
+    background-color: darken($facebook-blue, 5%);
+  }
+}
+
+.btn-twitter {
+  background-color: $twitter-blue;
+
+  &:hover {
+    background-color: darken($twitter-blue, 5%);
+  }
+}
+
+.container {
+  width: 700px;
+  max-width: 96%;
+  margin: auto;
+}
+
+section {
+  padding: 5rem 0;
+  background-color: $bg-color;
+
+  @include mobile {
+    padding: 2rem 0;
+  }
+
+  &#intro {
+    @include arrow-up($bg-color, 3rem);
+  }
+
+  &#letter {
+    background: linear-gradient(180deg, $alt-bg-color, $alt-bg-color 15%,$bg-color 0,$bg-color);
+  }
+
+  &:nth-child(even) {
+    background-color: $alt-bg-color;
+
+    &#intro:after {
+      border-bottom-color: $alt-bg-color;
+    }
+
+    &#letter {
+      background: linear-gradient(180deg, $bg-color, $bg-color 15%, $alt-bg-color 0, $alt-bg-color);
+    }
+  }
+}
+
+.hero {
+  background-image: url("~/assets/images/background.jpg");
+  background-size: cover;
+  padding-bottom: 8rem;
+
+  img {
+    display: inline-block;
+    margin: 1.5rem 0;
+  }
+
+  .elevator-pitch {
+    margin-top: -2.5rem;
+    font-size: 110%;
+  }
+
+  .btn {
+    padding-left: 0;
+    padding-right: 0;
+    width: 75%;
+    display: block;
+    margin: 2.5rem auto 0;
+
+    @include mobile {
+      width: 96%;
+    }
+  }
+
+  ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    font-size: 90%;
+    display: inline-block;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    border-right: 1px solid #fff;
+
+    &:last-child {
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.letter-wrapper {
+  color: $bg-color;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem 6rem 6rem;
+
+  @include mobile {
+    padding: 1rem 3rem 3rem;
+  }
+
+  h2 {
+    margin-bottom: 5rem;
+  }
+
+  .letter-copy {
+    font-size: 82%;
+    text-align: left;
+  }
+}
+
+.page-footer {
+  padding: 4rem 0 0;
+  background: linear-gradient(180deg,#303030,darken(#303030, 20%));
+
+  small {
+    display: block;
+    color: #797670;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+  }
+
+  img.logo {
+    width: 30rem;
+    display: block;
+    margin: 0.25rem auto 6rem;
+  }
+
+  .contact-info {
+    @include arrow-up(#0B0B0B, 2.5rem);
+    background-color: #0B0B0B;
+    padding: 2rem 0 4rem;
+
+    h5 {
+      margin: 1rem 0;
+    }
+
+    p {
+      font-size: 1.3rem;
+    }
+
+    a {
+      color: #2C94FF;
+    }
+  }
+}
