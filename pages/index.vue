@@ -12,6 +12,7 @@
         <ul>
           <li><a href="#intro" @click.prevent="scrollTo('intro')">Learn More</a></li>
           <li><a href="#letter" @click.prevent="scrollTo('letter')">Read the Letter</a></li>
+          <li><a href="#quotes" @click.prevent="scrollTo('quotes')">Why We Care</a></li>
         </ul>
       </div>
     </section>
@@ -40,7 +41,7 @@
       </div>
     </section>
 
-    <section id="quotes">
+    <section id="quotes" ref="quotes">
       <div class="container">
         <h2 ref="quotesWidth">What people are saying:</h2>
         <p>Over a thousand first responders have signed this open letter to Congress, urging our lawmakers to listen to the voices of the people and overturn the FCC's repeal of net neutrality.  Here are just a few comments from men and women whose lives are literally being put at risk by the destruction of net neutrality:</p>
