@@ -10,12 +10,12 @@
         <p><a href="#sign" class="btn btn-block btn-large">Sign the Open Letter</a></p>
 
         <ul>
-          <li><a href="#intro">Verizon Throttled the SCCFD</a></li>
-          <li><a href="#letter">Read the Letter</a></li>
+          <li><a href="#intro" @click.prevent="scrollTo('intro')">Verizon Throttled the SCCFD</a></li>
+          <li><a href="#letter" @click.prevent="scrollTo('letter')">Read the Letter</a></li>
         </ul>
       </div>
     </section>
-    <section id="intro">
+    <section id="intro" ref="intro">
       <div class="container">
         <h2>VERIZON THROTTLED THE SCCFD</h2>
         <p>While Santa Clara County firefighters were fighting some of the biggest forest fires in America’s history, Verizon was throttling their internet speeds, preventing firefighters from providing crisis response and emergency services to those in need … <a href="https://arstechnica.com/tech-policy/2018/08/verizon-throttled-fire-departments-unlimited-data-during-calif-wildfire/" target="_blank">all over a $2.00 monthly fee</a>.</p>
@@ -30,7 +30,7 @@
       </div>
     </section>
 
-    <section id="letter">
+    <section id="letter" ref="letter">
       <div class="container">
         <div class="letter-wrapper">
           <h2>Read the Letter</h2>
@@ -55,7 +55,7 @@
 
 <script>
 import config from '~/config.json'
-import { createMetaTags, simpleFormat } from '~/assets/js/helpers.js'
+import { createMetaTags, simpleFormat, smoothScrollToElement } from '~/assets/js/helpers.js'
 import ActionNetworkForm from '~/components/ActionNetworkForm'
 
 export default {
@@ -77,6 +77,16 @@ export default {
 
   computed: {
     letterToCongress: () => simpleFormat(config.letterToCongress)
+  },
+
+  methods: {
+    scrollTo(ref) {
+      smoothScrollToElement(this.$refs[ref])
+
+      setTimeout(() => {
+        location.hash = '#' + ref
+      }, 500)
+    }
   }
 }
 </script>
