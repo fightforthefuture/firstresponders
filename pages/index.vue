@@ -10,7 +10,7 @@
         <p><a href="#sign" class="btn btn-block btn-large" @click.prevent="scrollTo('sign'); $trackClick('top_cta_button')">Sign the Open Letter</a></p>
 
         <ul>
-          <li><a href="#intro" @click.prevent="scrollTo('intro')">Verizon Throttled the Fire Dept</a></li>
+          <li><a href="#intro" @click.prevent="scrollTo('intro')">Learn More</a></li>
           <li><a href="#letter" @click.prevent="scrollTo('letter')">Read the Letter</a></li>
         </ul>
       </div>
