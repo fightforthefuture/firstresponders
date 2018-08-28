@@ -160,7 +160,7 @@ export default {
 
       try {
         const { data } = await axios.post(
-          `https://fv8xpw9hri.execute-api.us-east-1.amazonaws.com/v1/petitions/${petitionId}/signatures`,
+          `https://petition.fftf.xyz/petitions/${petitionId}/signatures`,
           {
             name: this.name,
             email: this.email,
