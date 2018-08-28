@@ -10,16 +10,17 @@
         <p><a href="#sign" class="btn btn-block btn-large" @click.prevent="scrollTo('sign'); $trackClick('top_cta_button')">Sign the Open Letter</a></p>
 
         <ul>
-          <li><a href="#intro" @click.prevent="scrollTo('intro')">Verizon Throttled the SCCFD</a></li>
+          <li><a href="#intro" @click.prevent="scrollTo('intro')">Verizon Throttled the Fire Dept</a></li>
           <li><a href="#letter" @click.prevent="scrollTo('letter')">Read the Letter</a></li>
         </ul>
       </div>
     </section>
     <section id="intro" ref="intro">
       <div class="container">
-        <h2>VERIZON THROTTLED THE SCCFD</h2>
-        <p>While Santa Clara County firefighters were fighting some of the biggest forest fires in America’s history, Verizon was throttling their internet speeds, preventing firefighters from providing crisis response and emergency services to those in need … <a href="https://arstechnica.com/tech-policy/2018/08/verizon-throttled-fire-departments-unlimited-data-during-calif-wildfire/" target="_blank">all over a $2.00 monthly fee</a>.</p>
-        <p>Firefighters and other first responders deserve access to the fastest speeds on the internet, especially in times of crisis.  Because when emergency personnel can’t communicate quickly and clearly, it puts people’s lives at risk.  Net neutrality ensures that companies like Verizon are legally prevented from throttling internet speeds. <b>If you are a firefighter, EMT or other first responders, please sign this open letter calling on our elected officials in Congress to restore net neutrality.</b></p>
+        <h2>VERIZON THROTTLED FIREFIGHTERS DURING THE WORST WILDFIRE IN CALIFORNIA HISTORY</h2>
+        <p>While Santa Clara County firefighters were fighting some of the biggest forest fires in America’s history, Verizon was throttling their internet speeds, <a href="https://arstechnica.com/tech-policy/2018/08/fire-dept-rejects-verizons-customer-support-mistake-excuse-for-throttling/" target="_blank">preventing</a> firefighters from providing crisis response and emergency services to those in need.</p>
+        <p>Firefighters and other first responders deserve access to the fastest speeds on the internet, especially in times of crisis.  Because when emergency personnel can’t communicate quickly and clearly, it puts people’s lives at risk.  With strong net neutrality protections in place, what Verizon did could’ve been <a href="https://www.eff.org/deeplinks/2018/08/verizons-throttling-fire-fighters-could-go-unpunished-because-fcc-repealed-open" target="_blank">prevented</a>. But since FCC Chairman (and former Verizon lawyer) Ajit Pai’s repeal, all the fire department could do was pay the company more money to get service restored.</p>
+        <p><b>If you are a firefighter, EMT or other first responders, please sign this open letter calling on our elected officials in Congress to restore net neutrality.</b></p>
       </div>
     </section>
 
