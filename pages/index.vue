@@ -7,7 +7,7 @@
 
         <p class="elevator-pitch">We saw the true danger of the FCC's net neutrality repeal when Verizon was caught throttling California fire fighters. If you're a first responder who relies on the open Internet to do your job, please sign our open letter below.</p>
 
-        <p><a href="#sign" class="btn btn-block btn-large">Sign the Open Letter</a></p>
+        <p><a href="#sign" class="btn btn-block btn-large" @click.prevent="scrollTo('sign'); $trackClick('top_cta_button')">Sign the Open Letter</a></p>
 
         <ul>
           <li><a href="#intro" @click.prevent="scrollTo('intro')">Verizon Throttled the SCCFD</a></li>
@@ -23,7 +23,7 @@
       </div>
     </section>
 
-    <section id="sign">
+    <section id="sign" ref="sign">
       <div class="container">
         <h2>Sign the Letter</h2>
         <ActionNetworkForm />

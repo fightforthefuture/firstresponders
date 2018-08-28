@@ -135,6 +135,10 @@ section {
   background-size: cover;
   padding-bottom: 8rem;
 
+  @media only screen and (max-height: 600px) {
+    padding-top: 1rem;
+  }
+
   img {
     display: inline-block;
     margin: 1.5rem 0;
