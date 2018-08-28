@@ -68,6 +68,7 @@ import config from '~/config.json'
 import { createMetaTags, simpleFormat, smoothScrollToElement } from '~/assets/js/helpers.js'
 import ActionNetworkForm from '~/components/ActionNetworkForm'
 import QuoteScroller from '~/components/QuoteScroller'
+import shuffle from 'lodash/shuffle'
 
 export default {
   components: {
@@ -124,7 +125,7 @@ export default {
 
     async fetchQuotes() {
       const { data } = await axios.get('https://data.battleforthenet.com/firstresponders/quotes.json')
-      this.quotes = data
+      this.quotes = shuffle(data)
     }
   }
 }
