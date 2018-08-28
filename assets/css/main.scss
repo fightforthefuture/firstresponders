@@ -60,7 +60,7 @@ input, select, textarea {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 700;
-  background-color: $cta-color;
+  background-color: $brand-color;
   color: #fff;
   border: none;
   border-radius: $border-radius;
@@ -69,7 +69,7 @@ input, select, textarea {
 
   &:hover {
     color: #fff;
-    background-color: darken($cta-color, 5%);
+    background-color: darken($brand-color, 5%);
     cursor: pointer;
   }
 }
@@ -127,6 +127,14 @@ section {
     &#letter {
       background: linear-gradient(180deg, $bg-color, $bg-color 15%, $alt-bg-color 0, $alt-bg-color);
     }
+  }
+}
+
+#quotes {
+  overflow: hidden;
+
+  .quote-scroller {
+    margin-top: 2rem;
   }
 }
 

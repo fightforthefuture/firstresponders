@@ -40,6 +40,14 @@
       </div>
     </section>
 
+    <section id="quotes">
+      <div class="container">
+        <h2 ref="quotesWidth">What people are saying:</h2>
+        <p>Over a thousand first responders have signed this open letter to Congress, urging our lawmakers to listen to the voices of the people and overturn the FCC's repeal of net neutrality.  Here are just a few comments from men and women whose lives are literally being put at risk by the destruction of net neutrality:</p>
+        <QuoteScroller :init-quotes-width="initQuotesWidth" :quotes="quotes" />
+      </div>
+    </section>
+
     <footer class="page-footer">
       <small>Built by:</small>
       <a href="https://www.fightforthefuture.org"><img src="~/assets/images/fftf-logo.svg" alt="Fight for the Future" class="logo"></a>
@@ -55,13 +63,16 @@
 </template>
 
 <script>
+import axios from 'axios'
 import config from '~/config.json'
 import { createMetaTags, simpleFormat, smoothScrollToElement } from '~/assets/js/helpers.js'
 import ActionNetworkForm from '~/components/ActionNetworkForm'
+import QuoteScroller from '~/components/QuoteScroller'
 
 export default {
   components: {
-    ActionNetworkForm
+    ActionNetworkForm,
+    QuoteScroller
   },
 
   head() {
@@ -76,17 +87,44 @@ export default {
     }
   },
 
+  data() {
+    return {
+      quotes: [],
+      initQuotesWidth: 550
+    }
+  },
+
   computed: {
     letterToCongress: () => simpleFormat(config.letterToCongress)
   },
 
+  created() {
+    this.fetchQuotes()
+  },
+
+  mounted() {
+    this.setQuoteWidthInScroller()
+    this.$nextTick(function() {
+      window.addEventListener('resize', this.setQuoteWidthInScroller)
+    })
+  },
+
   methods: {
+    setQuoteWidthInScroller() {
+      this.initQuotesWidth = this.$refs.quotesWidth.clientWidth
+    },
+
     scrollTo(ref) {
       smoothScrollToElement(this.$refs[ref])
 
       setTimeout(() => {
         location.hash = '#' + ref
       }, 500)
+    },
+
+    async fetchQuotes() {
+      const { data } = await axios.get('https://data.battleforthenet.com/firstresponders/quotes.json')
+      this.quotes = data
     }
   }
 }
