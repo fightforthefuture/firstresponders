@@ -12,6 +12,7 @@
         <ul>
           <li><a href="#intro" @click.prevent="scrollTo('intro')">Learn More</a></li>
           <li><a href="#letter" @click.prevent="scrollTo('letter')">Read the Letter</a></li>
+          <li><a href="#deliver" @click.prevent="scrollTo('deliver')">Deliver the Letter</a></li>
           <li><a href="#quotes" @click.prevent="scrollTo('quotes')">Why We Care</a></li>
         </ul>
       </div>
@@ -38,6 +39,33 @@
           <h2>Read the Letter</h2>
           <div class="letter-copy" v-html="letterToCongress"></div>
         </div>
+
+        <div id="deliver" ref="deliver" class="sml-push-y5">
+          <h2>Deliver the letter to your member of Congress</h2>
+          <p>
+            Select your state below to print out the letter with a complete list
+            of first responders who have signed on. Then deliver the letter to
+            your representative&rsquo;s local office and give it to the staffer
+            at the front desk. Be friendly and polite, note the number of first
+            responders in your state that have signed, and ask them to make
+            sure the lawmaker gets it. Reiterate the ask of the letter: we want
+            the Congress member to sign the discharge petition to force a vote
+            in the House of Representatives on the Congressional Review Act (CRA)
+            resolution to overturn the FCC&rsquo;s repeal of net neutrality.
+          </p>
+
+          <div class="flex-row sml-push-y3">
+            <select v-model="selectedState" class="sml-flex-3">
+              <option :value="null">Select your state</option>
+              <option v-for="(name, abbr) in states" :key="abbr" :value="abbr">
+                {{ name }}
+              </option>
+            </select>
+            <button class="btn" :disabled="!selectedState" @click.prevent="printLetter()">
+              Print the Letter
+            </button>
+          </div> <!-- .flex-row -->
+        </div> <!-- #deliver -->
       </div>
     </section>
 
@@ -67,6 +95,7 @@
 import axios from 'axios'
 import config from '~/config.json'
 import { createMetaTags, simpleFormat, smoothScrollToElement } from '~/assets/js/helpers.js'
+import US_STATES from '~/assets/data/states.json'
 import ActionNetworkForm from '~/components/ActionNetworkForm'
 import QuoteScroller from '~/components/QuoteScroller'
 import shuffle from 'lodash/shuffle'
@@ -92,12 +121,14 @@ export default {
   data() {
     return {
       quotes: [],
-      initQuotesWidth: 550
+      initQuotesWidth: 550,
+      selectedState: null
     }
   },
 
   computed: {
-    letterToCongress: () => simpleFormat(config.letterToCongress)
+    letterToCongress: () => simpleFormat(config.letterToCongress),
+    states: () => US_STATES
   },
 
   created() {
@@ -127,9 +158,12 @@ export default {
     async fetchQuotes() {
       const { data } = await axios.get('https://data.battleforthenet.com/firstresponders/quotes.json')
       this.quotes = shuffle(data)
+    },
+
+    printLetter() {
+      this.$trackEvent('print_letter_button', 'click')
+      window.open(`https://data.battleforthenet.com/firstresponders/pdfs/${this.selectedState.toLowerCase()}.pdf`, '_blank')
     }
   }
 }
 </script>
-
-

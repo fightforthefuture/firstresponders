@@ -55,7 +55,7 @@ input, select, textarea {
 }
 
 .btn {
-  padding: 0.7rem 1.4rem;
+  padding: 1rem 1.4rem;
   display: inline-block;
   text-decoration: none;
   text-transform: uppercase;
@@ -64,7 +64,7 @@ input, select, textarea {
   color: #fff;
   border: none;
   border-radius: $border-radius;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   transition: background-color .1s;
 
   &:hover {
@@ -99,6 +99,41 @@ input, select, textarea {
   width: 700px;
   max-width: 96%;
   margin: auto;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+.flex-row > * {
+  flex: 1;
+  margin-right: 2rem;
+  min-width: 0;
+}
+.flex-row > *:last-child {
+  margin-right: 0;
+}
+@for $i from 1 through 4 {
+  .sml-flex-#{$i} {
+    flex: $i;
+  }
+}
+
+.sml-push-y1 {
+  margin-top: 1rem;
+}
+.sml-push-y2 {
+  margin-top: 2rem;
+}
+.sml-push-y3 {
+  margin-top: 3rem;
+}
+.sml-push-y4 {
+  margin-top: 4rem;
+}
+.sml-push-y5 {
+  margin-top: 5rem;
 }
 
 section {
