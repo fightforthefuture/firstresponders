@@ -1,3 +1,6 @@
+import axios from 'axios'
+
+// Wrap text in paragraph tags
 export function simpleFormat(text) {
   return text.split('\n\n').map(l => `<p>${l}</p>`).join('')
 }
@@ -59,6 +62,35 @@ export function createMetaTags(tags={}) {
   }
 
   return Object.values(meta)
+}
+
+// Pre-select US State based on IP
+export async function geocodeState() {
+  const state = {
+    name: null,
+    abbr: null
+  }
+
+  try {
+    const response = await axios.get('https://fftf-geocoder.herokuapp.com')
+    const geo = response.data
+
+    if (
+      geo.country.iso_code === 'US' &&
+      geo.subdivisions &&
+      geo.subdivisions[0] &&
+      geo.subdivisions[0].names &&
+      geo.subdivisions[0].names.en
+    ) {
+      state.name = geo.subdivisions[0].names.en
+      state.abbr = geo.subdivisions[0].iso_code
+    }
+  }
+  catch (err) {
+    console.error(err)
+  }
+
+  return state
 }
 
 /**

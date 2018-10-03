@@ -94,7 +94,7 @@
 <script>
 import axios from 'axios'
 import config from '~/config.json'
-import { createMetaTags, simpleFormat, smoothScrollToElement } from '~/assets/js/helpers.js'
+import { createMetaTags, simpleFormat, geocodeState, smoothScrollToElement } from '~/assets/js/helpers.js'
 import US_STATES from '~/assets/data/states.json'
 import ActionNetworkForm from '~/components/ActionNetworkForm'
 import QuoteScroller from '~/components/QuoteScroller'
@@ -131,8 +131,17 @@ export default {
     states: () => US_STATES
   },
 
-  created() {
+  async created() {
     this.fetchQuotes()
+
+    // Try to pre-select US state based on IP address
+    try {
+      const state = await geocodeState()
+      this.selectedState = state.abbr
+    }
+    catch (error) {
+      console.error("Geocoder error", error)
+    }
   },
 
   mounted() {
